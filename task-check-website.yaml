@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: task-check-website
+spec:
+  params:
+    - name: serviceurl
+      description: service url of the heroku app
+      default: "<default>"
+  steps:
+    - name: check-website
+      image: alpine:latest
+      command: ["/bin/sh"]
+      env: 
+        - name: TARGET_TESTURL
+          value: $(params.serviceurl)
+      args:
+        - -c
+        - |
+            apk add curl
+            echo "curl -I " $TARGET_TESTURL
+            curl -I $TARGET_TESTURL

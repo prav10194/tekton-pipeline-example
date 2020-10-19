@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: heroku-pipeline
+spec:
+  tasks:
+  - name: task-configure-heroku
+    taskRef:
+      name: task-configure-heroku
+  - name: task-check-website
+    params:
+      - name: serviceurl
+        value: $(tasks.task-configure-heroku.results.serviceurl)
+    taskRef:
+      name: task-check-website
+    runAfter: 
+      - task-configure-heroku
