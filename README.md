@@ -4,7 +4,7 @@
 
 For this demo, I have setup a free GCP Cluster. To setup, follow the process - 
 
-1. Setup gcloud on your system. 
+1. Setup gcloud on your system - https://cloud.google.com/sdk/docs/install
 
 2. Run the following commands - 
 
