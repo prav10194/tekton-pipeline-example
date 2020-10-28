@@ -1,5 +1,7 @@
 # Heroku example deployed using Tekton Pipelines
 
+A simple example to setup a tekton pipeline on Google Cloud Platform and deploy a webapp on Heroku. 
+
 ## Setting up a cluster
 
 For this demo, I have setup a free GCP Cluster. To setup, follow the process - 
@@ -35,3 +37,9 @@ The dashboard will be available at http://localhost:8001/api/v1/namespaces/tekto
 ## Setting up Heroku
 
 ## Running the pipeline
+
+To install resources in the pipeline - run script.sh after logging on to the cluster
+
+```cmd
+sh script.sh
+```
