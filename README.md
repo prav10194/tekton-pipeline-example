@@ -8,6 +8,8 @@ For this demo, I have setup a free GCP Cluster. To setup, follow the process -
 
 1. Setup gcloud on your system - https://cloud.google.com/sdk/docs/install
 
+2. To get your project name, or create a new project - go to the following https://console.cloud.google.com/ and there you will see the relevant details.
+
 2. Run the following commands - 
 
 ```cmd
