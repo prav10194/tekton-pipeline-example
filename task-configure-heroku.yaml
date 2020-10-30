@@ -41,7 +41,6 @@ spec:
             git config --global user.email "user.name@example.com" && \
             git config --global user.name "User Name" && \
             git init && git add . && git commit -m "Adding files" && \
-            heroku create > logs.txt && \
-            git push heroku master > logs1.txt && heroku ps:scale web=1 > logs2.txt
-            heroku apps:info -s  | grep web_url | cut -d= -f2 | grep https
+            heroku create && \
+            git push heroku master && heroku ps:scale web=1
             echo $(heroku apps:info -s  | grep web_url | cut -d= -f2 | grep https) | tee $(results.serviceurl.path)
