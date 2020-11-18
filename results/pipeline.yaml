@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: results-pipeline-ref
+spec:
+  tasks:
+  - name: task-initial
+    taskRef:
+      name: task-initial-ref
+  - name: task-post
+    taskRef:
+      name: task-post-ref
+    params:
+      - name: passedvalue
+        value: $(tasks.task-initial.results.passedvalue)
+    runAfter: 
+      - task-initial

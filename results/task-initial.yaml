@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: task-initial-ref
+spec:
+  results:
+    - name: passedvalue
+      description: Date passed from task-initial to task-post
+  steps:
+    - name: start-step
+      image: alpine:3.12.1
+      command: ["/bin/sh"]
+      args:
+        - -c
+        - |
+            cat /proc/version
+            echo "task-initial running"
+            echo $(date) | tee $(results.passedvalue.path)
+            echo "task-initial stopping"

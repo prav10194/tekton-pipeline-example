@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: task-post-ref
+spec:
+  params:
+    - name: passedvalue
+      description: Date passed from task-initial to task-post
+      default: "<default>"
+  steps:
+    - name: end-step
+      image: alpine:3.12.1
+      command: ["/bin/sh"]
+      env: 
+        - name: TASK_INITIAL_DATE
+          value: $(params.passedvalue)
+      args:
+        - -c
+        - |
+            echo "task-post running"
+            echo "task-initial ran on - " $TASK_INITIAL_DATE
+            echo "task-post stopping"
