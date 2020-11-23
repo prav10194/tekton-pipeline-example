@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: initial-task-ref
+spec:
+  workspaces:
+    - name: task-ws
+      description: The folder where we write the message to
+  steps:
+    - name: start-step
+      image: alpine:3.12.1
+      securityContext:
+        runAsUser: 0
+      command: ["/bin/sh"]
+      args:
+        - -c
+        - |
+            echo "Starting initial task"
+            echo "Hello World!" > $(workspaces.task-ws.path)/message.txt
+            ls -la $(workspaces.task-ws.path)
+            echo "Ending initial task"

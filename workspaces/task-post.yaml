@@ -1,0 +1,21 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: final-task-ref
+spec:
+  workspaces:
+    - name: task-ws
+      description: Workspace for sharing files between tasks
+  steps:
+    - name: final-task
+      image: alpine:3.12.1
+      securityContext:
+        runAsUser: 0
+      command: ["/bin/sh"]
+      args:
+        - -c
+        - |
+            echo "Starting final task - Reading file from workspace"
+            cat $(workspaces.task-ws.path)/message.txt
+            echo "End final task"
+  

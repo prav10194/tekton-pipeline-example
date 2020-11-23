@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: workspace-pipeline-ref
+spec:
+  workspaces:
+    - name: pipeline-ws
+  tasks:
+  - name: initial-task
+    taskRef:
+      name: initial-task-ref
+    workspaces:
+      - name: task-ws
+        workspace: pipeline-ws
+  - name: final-task
+    taskRef:
+        name: final-task-ref
+    workspaces:
+        - name: task-ws
+          workspace: pipeline-ws
+    runAfter: 
+        - initial-task
