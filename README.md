@@ -10,7 +10,7 @@ For this demo, I have setup a free GCP Cluster. To setup, follow the process -
 
 2. To get your project name, or create a new project - go to the following https://console.cloud.google.com/ and there you will see the relevant details.
 
-2. Run the following commands - 
+3. Run the following commands - 
 
 ```cmd
 gcloud auth login --no-launch-browser
@@ -19,6 +19,13 @@ gcloud config set compute/zone us-west1-a
 gcloud container clusters create test-cluster --num-nodes=1
 gcloud container clusters get-credentials test-cluster --zone us-west1-a --project <PROJECT_NAME>
 ```
+
+4. Deleting a cluster
+
+```cmd
+gcloud container clusters delete test-cluster
+```
+
 
 ## Installing Tekton pipeline and dashboard
 
